@@ -29,9 +29,14 @@ describe("math", () =>
 
     describe("divide", () =>
     {
-        it("should  less on two ", () =>
+        it.only.each([
+            { inputA: 10, inputB: 2, expected: 5 },
+            { inputA: 10, inputB: 0, expected: Infinity },
+            { inputA: 6, inputB: 3, expected: 2 },
+            { inputA: 100, inputB: 10, expected: 10 },
+        ])("should $inputA divided $inputB equals $expected ", ({ inputA, inputB, expected }) =>
         {
-            expect(divide(10, 2)).toBe(5)
+            expect(divide(inputA, inputB)).toBe(expected)
         })
     })
     describe("sum", () =>
